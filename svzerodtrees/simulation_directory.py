@@ -1272,7 +1272,7 @@ class SvFSIxml(SimFile):
         print('writing svFSIplus.xml...')
 
         # generate XML tree
-        svfsifile = ET.Element("svMultiPhysicsFile")
+        svfsifile = ET.Element("svFSIFile") # really should be svMultiPhysics
         svfsifile.set("version", "0.1")
 
         # General Simulation Parameters
