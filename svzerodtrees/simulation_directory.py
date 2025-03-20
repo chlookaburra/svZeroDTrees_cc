@@ -228,7 +228,7 @@ class SimulationDirectory:
 
         self.check_files(verbose=False)
 
-        os.system('clean')
+        os.system('make clean')
         os.system(f'sbatch {self.solver_runscript.path}')
 
     def check_files(self, verbose=True):
