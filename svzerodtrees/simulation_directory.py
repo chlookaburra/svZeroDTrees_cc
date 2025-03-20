@@ -1502,6 +1502,8 @@ class SolverRunscript(SimFile):
         self.memory = memory
         self.svfsiplus_path = svfsiplus_path
 
+        total_procs = int(nodes*procs_per_node)
+
         print('writing solver runscript file...')
 
         with open(self.path, 'w') as ff:
@@ -1539,7 +1541,7 @@ class SolverRunscript(SimFile):
             #ff.write("ml qt\n")
             #ff.write("ml gcc/14.2.0\n")
             #ff.write("ml cmake\n\n")
-            ff.write(f'mpirun --mca mpi_cuda_support 0 -n 2 singularity exec {docker_path} bash -c "{svfsiplus_path} svFSIplus.xml"\n')
+            ff.write(f'mpirun --mca mpi_cuda_support 0 -n {total_procs} singularity exec {docker_path} bash -c "{svfsiplus_path} svFSIplus.xml"\n')
         
         self.is_written = True
 
