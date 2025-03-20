@@ -1491,7 +1491,8 @@ class SolverRunscript(SimFile):
               procs_per_node=24, 
               hours=6, 
               memory=16,
-              svfsiplus_path='/home/users/ndorn/svMP-procfix/svMP-build/svMultiPhysics-build/bin/svmultiphysics'):
+              svfsiplus_path='$HOME/svFSIplus/build/svFSI-build/bin/svFSI'),
+              docker_path='$HOME/svFSIplus/lib_ubuntu.sif':
         '''
         write the solver runscript file'''
 
@@ -1506,12 +1507,12 @@ class SolverRunscript(SimFile):
         with open(self.path, 'w') as ff:
             ff.write("#!/bin/bash\n\n")
             ff.write("#name of your job \n")
-            ff.write("#SBATCH --job-name=svFlowSolver\n")
+            ff.write("#SBATCH --job-name=svFSItree\n")
             ff.write("#SBATCH --partition=amarsden\n\n")
             ff.write("# Specify the name of the output file. The %j specifies the job ID\n")
-            ff.write("#SBATCH --output=svFlowSolver.o%j\n\n")
+            ff.write("#SBATCH --output=svFSItree.o%j\n\n")
             ff.write("# Specify the name of the error file. The %j specifies the job ID \n")
-            ff.write("#SBATCH --error=svFlowSolver.e%j\n\n")
+            ff.write("#SBATCH --error=svFSItree.e%j\n\n")
             ff.write("# The walltime you require for your job \n")
             ff.write(f"#SBATCH --time={hours}:00:00\n\n")
             ff.write("# Job priority. Leave as normal for now \n")
@@ -1523,22 +1524,22 @@ class SolverRunscript(SimFile):
             ff.write("# Number of processors per node \n")
             ff.write(f"#SBATCH --ntasks-per-node={procs_per_node} \n\n")
             ff.write("# Send an email to this address when your job starts and finishes \n")
-            ff.write("#SBATCH --mail-user=ndorn@stanford.edu \n")
+            ff.write("#SBATCH --mail-user=chloe1@stanford.edu \n")
             ff.write("#SBATCH --mail-type=begin \n")
             ff.write("#SBATCH --mail-type=end \n")
             ff.write("module --force purge\n\n")
-            ff.write("ml devel\n")
-            ff.write("ml math\n")
-            ff.write("ml openmpi\n")
-            ff.write("ml openblas\n")
-            ff.write("ml boost\n")
-            ff.write("ml system\n")
-            ff.write("ml x11\n")
-            ff.write("ml mesa\n")
-            ff.write("ml qt\n")
-            ff.write("ml gcc/14.2.0\n")
-            ff.write("ml cmake\n\n")
-            ff.write(f"srun {svfsiplus_path} svFSIplus.xml\n")
+            #ff.write("ml devel\n")
+            #ff.write("ml math\n")
+            ff.write("ml openmpi/5.0.5\n")
+            #ff.write("ml openblas\n")
+            #ff.write("ml boost\n")
+            #ff.write("ml system\n")
+            #ff.write("ml x11\n")
+            #ff.write("ml mesa\n")
+            #ff.write("ml qt\n")
+            #ff.write("ml gcc/14.2.0\n")
+            #ff.write("ml cmake\n\n")
+            ff.write(f'mpirun --mca mpi_cuda_support 0 -n 2 singularity exec {docker_path} bash -c "{svfsiplus_path} svFSIplus.xml"\n')
         
         self.is_written = True
 
