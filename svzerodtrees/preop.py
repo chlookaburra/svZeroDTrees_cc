@@ -49,7 +49,7 @@ def optimize_outlet_bcs(input_file,
     clinical_targets.log_clinical_targets(log_file)
 
     # initialize the data handlers
-    config_handler = ConfigHandler.from_json(input_file)
+    config_handler = ConfigHandler.from_json(input_file, is_pulmonary=True) # quick fix to attribute error for missing mpa 
     result_handler = ResultHandler.from_config(config_handler.config)
 
     if steady:
@@ -57,10 +57,10 @@ def optimize_outlet_bcs(input_file,
             if bc.type == 'RCR':
                 bc.change_to_R()
 
-        
+    # chloe comment: any reason why this is repeated twice? i commented it out for now    
     # initialize the data handlers
-    config_handler = ConfigHandler.from_json(input_file)
-    result_handler = ResultHandler.from_config_handler(config_handler)
+    #config_handler = ConfigHandler.from_json(input_file)
+    #result_handler = ResultHandler.from_config_handler(config_handler)
 
     # scale the inflow
     # objective function value as global variable
