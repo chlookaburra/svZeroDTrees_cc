@@ -1201,7 +1201,7 @@ class SVZeroDInterface(SimFile):
 
     def write(self,
               threed_coupler_path,
-              interface_path='$HOME/svZeroD_branches/svZeroDSolver/Release/src/interface/libsvzero_interface.so',
+              interface_path='/home/users/chloe1/svZeroD_branches/svZeroDSolver/Release/src/interface/libsvzero_interface.so',
               initialize_flows=0,
               initial_flow=0.0,
               initialize_pressures=1,
@@ -1491,8 +1491,8 @@ class SolverRunscript(SimFile):
               procs_per_node=24, 
               hours=6, 
               memory=16,
-              svfsiplus_path='$HOME/svFSIplus/build/svFSI-build/bin/svFSI'),
-              docker_path='$HOME/svFSIplus/lib_ubuntu.sif':
+              svfsiplus_path='/home/users/chloe1/svFSIplus/build/svFSI-build/bin/svFSI',
+              docker_path='/home/users/chloe1/svFSIplus/lib_ubuntu.sif'):
         '''
         write the solver runscript file'''
 
