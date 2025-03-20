@@ -11,7 +11,7 @@ ml py-scipy/1.10.1_py39
 ml py-pandas/2.0.1_py39
 ml py-matplotlib/3.7.1_py39
 ml cmake
-ml gcc/12.1.0
+ml gcc/14.2.0
 ml binutils/2.38
 
 # installing svzerodtrees package
