@@ -1530,7 +1530,7 @@ class SolverRunscript(SimFile):
             ff.write("#SBATCH --mail-type=begin \n")
             ff.write("#SBATCH --mail-type=end \n")
             ff.write("module --force purge\n\n")
-            #ff.write("ml devel\n")
+            ff.write("ml devel\n")
             #ff.write("ml math\n")
             ff.write("ml openmpi/5.0.5\n")
             #ff.write("ml openblas\n")
