@@ -1201,7 +1201,7 @@ class SVZeroDInterface(SimFile):
 
     def write(self,
               threed_coupler_path,
-              interface_path='/home/users/ndorn/svZeroDSolver/Release/src/interface/libsvzero_interface.so',
+              interface_path='$HOME/svZeroD_branches/svZeroDSolver/Release/src/interface/libsvzero_interface.so',
               initialize_flows=0,
               initial_flow=0.0,
               initialize_pressures=1,
