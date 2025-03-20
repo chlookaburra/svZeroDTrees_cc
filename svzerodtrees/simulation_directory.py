@@ -1492,7 +1492,7 @@ class SolverRunscript(SimFile):
               hours=6, 
               memory=16,
               svfsiplus_path='/home/users/chloe1/svFSIplus/build/svFSI-build/bin/svFSI',
-              docker_path='/home/users/chloe1/svFSIplus/lib_ubuntu.sif'):
+              docker_path='/home/users/chloe1/svFSIplus/lib_ubuntu22.sif'):
         '''
         write the solver runscript file'''
 
