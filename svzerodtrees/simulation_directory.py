@@ -1529,10 +1529,14 @@ class SolverRunscript(SimFile):
             ff.write("#SBATCH --mail-user=chloe1@stanford.edu \n")
             ff.write("#SBATCH --mail-type=begin \n")
             ff.write("#SBATCH --mail-type=end \n")
-            ff.write("module --force purge\n\n")
-            ff.write("ml devel\n")
+            # docker container settings
+            ff.write("export UCS_TLS=ib\n")
+            ff.write("export OMPI_MCA_btl_tcp_if_include=ib0\n")
+            # load modules
+            ff.write("module purge\n")
+            #ff.write("ml devel\n")
             #ff.write("ml math\n")
-            ff.write("ml openmpi/5.0.5\n")
+            ff.write("module load openmpi/5.0.5\n\n")
             #ff.write("ml openblas\n")
             #ff.write("ml boost\n")
             #ff.write("ml system\n")

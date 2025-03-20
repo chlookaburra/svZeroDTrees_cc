@@ -25,7 +25,7 @@ class Simulation:
                  steady_dir='steady',
                  adaptation='cwss',
                  adapt_location='uniform',
-                 zerod_config='zerod_config.json',
+                 zerod_config='blank_zerod_config.json', # trying it
                  convert_to_cm=False,
                  optimized=False):
         
@@ -87,7 +87,7 @@ class Simulation:
             reduced_config = ConfigHandler.from_json(self.simplified_zerod_config)
         
         if not bcs_optimized:
-            optimize_impedance_bcs(reduced_config, self.preop_dir.mesh_complete.mesh_surfaces_dir, self.clinical_targets, opt_config_path=self.zerod_config, d_min=0.01, convert_to_cm=self.convert_to_cm, n_procs=24)
+            optimize_impedance_bcs(reduced_config, self.preop_dir.mesh_complete.mesh_surfaces_dir, self.clinical_targets, opt_config_path=self.zerod_config_path, d_min=0.01, convert_to_cm=self.convert_to_cm, n_procs=24)
             # need to create coupling config and add to preop/postop directories
         
         else:
