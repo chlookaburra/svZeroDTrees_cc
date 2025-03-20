@@ -5,6 +5,7 @@
 
 ml python/3.9.0
 ml viz
+ml mesa
 ml py-numpy/1.24.2_py39
 ml py-scipy/1.10.1_py39
 ml py-pandas/2.0.1_py39
