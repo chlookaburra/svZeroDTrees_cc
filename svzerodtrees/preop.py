@@ -212,7 +212,7 @@ def optimize_pa_bcs(input_file,
     clinical_targets.log_clinical_targets(log_file)
 
     # initialize the data handlers
-    config_handler = ConfigHandler.from_json(input_file)
+    config_handler = ConfigHandler.from_json(input_file, is_pulmonary=True) #trying this here too -chloe
     result_handler = ResultHandler.from_config(config_handler.config)
 
     # set the inflow in case it is wrong
